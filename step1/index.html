@@ -4,24 +4,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Vue Step1</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!--add own css-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css" />
-  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div id="app">
+    <!--add exist html code -->
     <div class="container profile">
       <section class="section profile-heading">
         <div>
           <div class="level">
             <span class="title is-1">Step1</span>
           </div>
-          <p class="level is-pulled-right">
-            <span class="nav-item">Estimated monthly cost</span>
-            <span class="nav-item subtitle is-3">¥{{total}} / 月</span>
-          </p>
         </div>
         <section class="section">
           <div class="container">
@@ -64,11 +62,12 @@
           <div class="container">
             <div class="heading">
               <h1 class="title">Size</h1>
+
             </div>
             <hr>
             <div class="content">
               <input type="range" name="size" style="width:100%;" min="0" max="10" step="1" v-model="size">
-              <span>{{size}}</span>
+              <p class="is-pulled-right" style="font-size: 20px;">¥{{sizeTotal}}/月</p>
             </div>
           </div>
         </section>
@@ -100,7 +99,11 @@
             </div>
           </div>
         </section>
-        <div class="control is-grouped">
+        <div class="has-text-centered">
+          <ul class="level is-pulled-right">
+            <li class="title">Total price　</li>
+            <li class="subtitle is-3">¥{{total}} / 月</li>
+          </ul>
         </div>
       </section>
       <option-s></option-s>
@@ -108,6 +111,26 @@
   </div>
 </body>
 <script src="https://unpkg.com/vue@2.0.3/dist/vue.min.js"></script>
-<script src="app.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      plan: 100,
+      size: 0,
+      options: [],
+    },
+    computed: {
+      sizeTotal: function () {
+        return (this.size * 500)
+      },
+      total: function () {
+        return[
+          this.plan,
+          this.sizeTotal,
+        ].concat(this.options).reduce(function(a, b) {return Number(a) + Number(b)})
+      }
+    }
+  })
+</script>
 
 </html>

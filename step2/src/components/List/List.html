@@ -1,0 +1,17 @@
+<div>
+  <p class="title is-1">List of Pockemon</p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="item in listData" v-on:click="goDetail(item)">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

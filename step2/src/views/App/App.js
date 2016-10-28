@@ -1,9 +1,15 @@
 import Vue from 'vue';
 import './App.css';
 import temp from './App.html';
+import Header from '../../components/Header/Header';
+import List from '../../components/List/List';
 
 export default Vue.extend({
   template: temp,
+  components: {
+    "header-nav":Header,
+    "list":List,
+  },
   data: () => {
     const initialState = {
       plan: 100,

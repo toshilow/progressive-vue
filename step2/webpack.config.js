@@ -11,8 +11,20 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue',
+      },
+      {
         test: /\.html$/,
         loader: 'html',
+      },
+      {
+        test: /\.s[a|c]ss$/,
+        loaders: ["style", "css","sass"]
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
       },
       {
         test: /\.js$/,
@@ -20,13 +32,13 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|json)$/,
         loader: 'file',
         options: {
           name: '[name].[ext]?[hash]'
         }
       }
-    ]
+    ],
   },
   resolve: {
     alias: {

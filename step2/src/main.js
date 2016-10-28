@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import App from './components/App/App';
+import router from './router'
+import VueCharts from 'vue-charts'
 
+Vue.use(VueCharts)
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  render: h => h(App)
-});
+  router
+}).$mount('#app');
